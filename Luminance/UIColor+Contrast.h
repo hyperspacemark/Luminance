@@ -10,6 +10,7 @@
 
 @interface UIColor (Contrast)
 
+- (CGFloat)luminance;
 - (UIColor *)maximumContrastingColor;
 
 @end

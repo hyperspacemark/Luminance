@@ -8,11 +8,9 @@
 
 #import "MATestViewController.h"
 #import "UIColor+Contrast.h"
+#import "UIImage+AverageColor.h"
 
 @interface MATestViewController ()
-
-@property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @end
 
@@ -22,29 +20,30 @@
 {
     UIColor *randomColor = [self randomColor];
     [self changeNavigationBarColor:randomColor];
-    [self changeTitleLabelTextColor:[randomColor maximumContrastingColor]];
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self updateStatusBar];
+    });
+}
+
+- (void)updateStatusBar
+{
+    CGRect rect = CGRectMake(0, 0, CGRectGetWidth([[UIScreen mainScreen] bounds]), 20.0f);
+    UIGraphicsBeginImageContextWithOptions(rect.size, YES, 0.0f);
+    [self.navigationController.navigationBar drawViewHierarchyInRect:rect afterScreenUpdates:YES];
+    UIImage *statusBarBackgroundImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
+    if ([[statusBarBackgroundImage averageColor] luminance] < 0.5) {
+        self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    } else {
+        self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
+    }
 }
 
 - (void)changeNavigationBarColor:(UIColor *)color
 {
-    self.navigationBar.tintColor = color;
-}
-
-- (void)changeTitleLabelTextColor:(UIColor *)color
-{
-    self.titleLabel.textColor = [color colorWithAlphaComponent:0.90];
-
-    CGFloat yOffset = 1;
-    UIColor *shadowColor = [UIColor blackColor];
-
-    if ([color isEqual:[UIColor blackColor]])
-    {
-        yOffset = -1;
-        shadowColor = [UIColor whiteColor];
-    }
-
-    self.titleLabel.shadowColor = [shadowColor colorWithAlphaComponent:0.75];
-    self.titleLabel.shadowOffset = CGSizeMake(0, (color == [UIColor blackColor]? 1 : -1));
+    self.navigationController.navigationBar.barTintColor = color;
 }
 
 - (UIColor *)randomColor
@@ -65,7 +64,7 @@
 {
     NSInteger from = range.location;
     NSInteger to = range.location + range.length;
-    return (arc4random() % (to - from)) + from;
+    return arc4random_uniform(to - from);
 }
 
 @end

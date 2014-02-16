@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>FBC536E9-93FC-49C0-A02B-5494EE774751</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Luminance</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>E7863243-20E8-4384-8280-1803433AE187</key>
+		<string>ssh://github.com/21x9/Luminance.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Luminance.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>E7863243-20E8-4384-8280-1803433AE187</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/21x9/Luminance.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E7863243-20E8-4384-8280-1803433AE187</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E7863243-20E8-4384-8280-1803433AE187</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Luminance</string>
+		</dict>
+	</array>
+</dict>
+</plist>
